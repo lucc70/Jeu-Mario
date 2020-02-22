@@ -1,3 +1,4 @@
+	this.imgFond1 = this.icoFond.getImage(); // associer img fond ï¿½ ico fond
 package com.mathmaurer.jeu;
 
 import java.awt.Graphics;
@@ -29,17 +30,17 @@ public class Scene extends JPanel {
 		super();
 	
 	this.xFond1=-50; // taille du fond dans la fenetre
-	this.dx = 0; // valeur que prendra l'action à soustraire a l'affichage
+	this.dx = 0; // valeur que prendra l'action ï¿½ soustraire a l'affichage
 	icoFond = new ImageIcon(getClass().getResource("/images/fondEcran.png")); // "src/images/fondEcran.png"
-	this.imgFond1 = this.icoFond.getImage(); // associer img fond à ico fond
+	this.imgFond1 = this.icoFond.getImage(); // associer img fond ï¿½ ico fond
 	icoMario = new ImageIcon(getClass().getResource("/images/marioMarcheDroite.png")); // "src/images/fondEcran.png"
-	this.imgMario = this.icoMario.getImage(); // associer img mario à ico mario
+	this.imgMario = this.icoMario.getImage(); // associer img mario ï¿½ ico mario
 	
-	this.setFocusable(true); // premiere condition pour recupérer le listerner clavier
-	this.requestFocusInWindow(); // deuxieme condition pour recupérer le listener clavier
-	this.addKeyListener(new Clavier()); // relie la classe clavier à la class scene grace à addKeyListener
+	this.setFocusable(true); // premiere condition pour recupï¿½rer le listerner clavier
+	this.requestFocusInWindow(); // deuxieme condition pour recupï¿½rer le listener clavier
+	this.addKeyListener(new Clavier()); // relie la classe clavier ï¿½ la class scene grace ï¿½ addKeyListener
 	
-	Thread chronoEcran = new Thread(new Chrono()); // 2) Instance de notre chrono grace à thread
+	Thread chronoEcran = new Thread(new Chrono()); // 2) Instance de notre chrono grace ï¿½ thread
 	chronoEcran.start(); // touneras en fond en permamnance 
 	}
 	
@@ -50,20 +51,20 @@ public class Scene extends JPanel {
 	public void setDx(int dx) {this.dx = dx;}
 	public int getDx() {return dx;}
 	
-	// création de la methode du changeemnt de fond
+	// crï¿½ation de la methode du changeemnt de fond
 
 	public void deplacementFond () {
 		this.xFond1 = this.xFond1 - this.dx; // deplacement dans le sens contraire de mario
 	}
 	
-	// création de la methode d'affichage 
+	// crï¿½ation de la methode d'affichage 
 
 
 	public void paintComponent(Graphics g) {
 		
 		
 		super.paintComponent(g);
-		// amélioration du rendu graphic avec la classe Graphic 2D
+		// amï¿½lioration du rendu graphic avec la classe Graphic 2D
 		Graphics g2 = (Graphics2D)g;
 		
 		this.deplacementFond();
