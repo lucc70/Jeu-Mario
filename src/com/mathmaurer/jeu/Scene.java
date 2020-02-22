@@ -1,4 +1,3 @@
-	this.imgFond1 = this.icoFond.getImage(); // associer img fond ï¿½ ico fond
 package com.mathmaurer.jeu;
 
 import java.awt.Graphics;
@@ -30,9 +29,9 @@ public class Scene extends JPanel {
 		super();
 	
 	this.xFond1=-50; // taille du fond dans la fenetre
-	this.dx = 0; // valeur que prendra l'action ï¿½ soustraire a l'affichage
+	this.dx = 0; // valeur que prendra l'action a soustraire a l'affichage
 	icoFond = new ImageIcon(getClass().getResource("/images/fondEcran.png")); // "src/images/fondEcran.png"
-	this.imgFond1 = this.icoFond.getImage(); // associer img fond ï¿½ ico fond
+	this.imgFond1 = this.icoFond.getImage(); // associer img fond à ico fond
 	icoMario = new ImageIcon(getClass().getResource("/images/marioMarcheDroite.png")); // "src/images/fondEcran.png"
 	this.imgMario = this.icoMario.getImage(); // associer img mario ï¿½ ico mario
 	
@@ -64,7 +63,7 @@ public class Scene extends JPanel {
 		
 		
 		super.paintComponent(g);
-		// amï¿½lioration du rendu graphic avec la classe Graphic 2D
+		// amelioration du rendu graphic avec la classe Graphic 2D
 		Graphics g2 = (Graphics2D)g;
 		
 		this.deplacementFond();
