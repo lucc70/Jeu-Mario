@@ -12,51 +12,34 @@ public class Scene extends JPanel {
 	
 	//pour stocker l'image du fond 
 	private ImageIcon icoFond;
-	private Image imgFond1; 
-	private Image imgFond2;
-	private ImageIcon icoDepart;
-	private Image imgDepart;
-	private ImageIcon icoChateau1;
-	private Image imgChateau1;
-	
+	private Image imgFond1;  
+	private Image imgFond2; // création de l'image 2 pour créé la boucle 
 	
 	// stocker l'image de mario 
 	private ImageIcon icoMario; // code provisoire
 	private Image imgMario; // code provisoire 
 	
-	
-	
 	// craetion de la varible pour la taille du fond 
 	private int xFond1; 
-	private int xFond2;
-	private int xPos; // position des élément du jeu 
+	private int xFond2; // position de l'image2
+	
 	private int dx; // variable pour deplacement de l'ecran
+	
 	
 	
 	// CONSTRUCTEUR de l'objet scene
 	public Scene() {
 		
 		super();
-	
-	this.xFond1=-50;// taille du fond dans la fenetre
-	this.xFond2 = 750; // taille de fond 2 = fond 1 -50 - taille fenetre 800
+	// initialisation des variables
+	this.xFond1=-50; // taille du fond dans la fenetre
+	this.xFond2= 750; // taille de fond 2 a la suite de fond 1 (Imgae 800 de large - 50 de fond 1 donc 750)
 	this.dx = 0; // valeur que prendra l'action à soustraire a l'affichage
-	this.xPos = -1; // initialisation de xPos à -1
-	
 	icoFond = new ImageIcon(getClass().getResource("/images/fondEcran.png")); // "src/images/fondEcran.png"
 	this.imgFond1 = this.icoFond.getImage(); // associer img fond à ico fond
 	this.imgFond2 = this.icoFond.getImage(); // associer img fond à ico fond
-	
 	icoMario = new ImageIcon(getClass().getResource("/images/marioMarcheDroite.png")); // "src/images/fondEcran.png"
 	this.imgMario = this.icoMario.getImage(); // associer img mario à ico mario
-	
-	
-	icoDepart = new ImageIcon(getClass().getResource("/images/depart.png"));
-	this.imgDepart = this.icoDepart.getImage();
-	
-	icoChateau1 = new ImageIcon(getClass().getResource("/images/chateau1.png"));
-	this.imgChateau1 = this.icoChateau1.getImage();
-	
 	
 	this.setFocusable(true); // premiere condition pour recupérer le listerner clavier
 	this.requestFocusInWindow(); // deuxieme condition pour recupérer le listener clavier
@@ -70,37 +53,17 @@ public class Scene extends JPanel {
 	
 	//Methodes GET ET SET
 	
-	public int getxPos() {return xPos;}
-	public void setxPos(int xPos) {this.xPos = xPos;}
-
 	public void setDx(int dx) {this.dx = dx;}
 	public int getDx() {return dx;}
-	
-	public void setxFond1(int i) {}
-	public void setxFond2(int i) {}
 	
 	// création de la methode du changeemnt de fond
 
 	public void deplacementFond () {
 		
-		if (this.xPos>= 0) {
-			this.xPos = this.xPos + this.dx;
-			
-			this.xFond1 = this.xFond1 - this.dx; // deplacement dans le sens contraire de mario
-			this.xFond2 = this.xFond2 - this.dx;// deplacement dans le sens contraire de mario pour l'image fond 2
-
-		} 
-		
-				
-		if (this.xFond1 == -800) { // pour remettre le fond à 0 et que les image se remmette a l'affichage
-			this.xFond1 = 800;
-		} else if (this.xFond2 == -800){
-			this.xFond2 = 800;
-		} else if (this.xFond1 == 800) {
-			this.xFond1=-800;
-		} else if (this.xFond2 == 800) {
-			this.xFond2 = -800;
-		}
+//		this.xFond1 = this.xFond1 - this.dx; // deplacement dans le sens contraire de mario
+//		this.xFond1 = this.xFond1 - this.dx; // deplacement dans le sens contraire de mario
+		//this.xFond2 = this.xFond2 - this.dx;// déplacer fond 2 en meme temps que fond 1 
+		System.out.println("ok");
 	}
 	
 	// création de la methode d'affichage 
@@ -115,15 +78,9 @@ public class Scene extends JPanel {
 		
 		this.deplacementFond();
 		
-		
 		g2.drawImage(this.imgFond1, this.xFond1, 0, null); //Dessin de l'image de fond avec la fonction drawImage (ingFond1 = img qu'on va dessiner, en posiiton xFond, observable = null)
-		g2.drawImage(this.imgFond2, this.xFond2, 0, null); //Dessin de l'image de fond avec la fonction drawImage (ingFond1 = img qu'on va dessiner, en posiiton xFond, observable = null)
-		
-		g2.drawImage(imgChateau1, 10 - this.xPos, 95, null);
-		g2.drawImage(imgDepart, 220 - this.xPos, 234, null);
-		
+		g2.drawImage(this.imgFond2, this.xFond2, 0, null); 
 		g2.drawImage(imgMario, 300, 245, null); //Dessin de l'image de mario avec la fonction drawImage (ce qu'on dessine = imgMario, position horizontal= 300, vertical=245, observable=0
-		
 	}
 
 }

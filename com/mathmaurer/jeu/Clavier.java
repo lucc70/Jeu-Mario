@@ -8,11 +8,6 @@ public class Clavier implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) { // appuie sur la touche 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) { // quand on appuie sur la fleche droit 
-			if (Main.scene.getxPos() == -1) { // collé a gaauche
-				Main.scene.setxPos(0); // on le remet à 0
-				Main.scene.setxFond1(-50); // on remet le fond à l'initial -50 
-				Main.scene.setxFond2(750); // on remet le fond2 à l'initial 750
-			}
 			Main.scene.setDx(1); // dx = 1 et bouge de 1
 		}
 		
